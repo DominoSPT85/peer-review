@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  has_many: posts
-  has_many: answers
+  has_many :posts
+  has_many :answers
 end

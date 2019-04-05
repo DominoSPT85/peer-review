@@ -10,7 +10,7 @@ import FetchUser from './components/FetchUser';
 import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => (
-  <div>
+  <Fragment>
     <Navbar />
     <FetchUser>
       <Container>
@@ -22,7 +22,7 @@ const App = () => (
         </Switch>
       </Container>
     </FetchUser>
-  </div>
+  </Fragment>
 )
 
 export default App;
