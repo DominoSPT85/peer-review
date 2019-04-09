@@ -6,22 +6,22 @@ class Api::PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    if post.save
-      render json: post
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      render json: @post
     else
-      render json: { errors: post.errors }, status: :unprocessable_entity 
+      render json: { errors: @post.errors }, status: :unprocessable_entity 
     end
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update
-    render json: post
+    @post = current_user.posts.find(params[:id])
+    @post.update
+    render json: @post
   end
 
   def destroy
-    Post.find(params[:id]).destroy
+    current_user.posts.find(params[:id]).destroy
     render json: { message: 'Post deleted' }
   end
 
