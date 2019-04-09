@@ -18,7 +18,7 @@ class PostList extends React.Component {
         console.log(err);
       })
   }
-    updatePosts = (id) => {
+    updatePost = (id) => {
       axios.put(`/api/posts/${id}`)
       .then( res => {
         const posts = this.state.posts.map( p => {
@@ -30,7 +30,7 @@ class PostList extends React.Component {
       })
     }
   
-    deletePosts = (id) => {
+    deletePost = (id) => {
       axios.delete(`/api/posts/${id}`)
       .then( res => {
         const { posts } = this.state;
@@ -50,8 +50,8 @@ class PostList extends React.Component {
           key={i}
           {...d}
           posts={this.state.posts}
-          updateposts={this.updatePosts}
-          deleteposts={this.deletePosts}
+          updatePost={this.updatePost}
+          deletePost={this.deletePost}
           />
           )
         })
