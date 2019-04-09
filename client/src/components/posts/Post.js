@@ -1,11 +1,11 @@
 import React from 'react';
 import {Header, Button, Icon} from 'semantic-ui-react';
 
-const Posts = ({ id, title, body, updatePost, deletePost }) => (
+const Post = ({ id, title, body, updatePost, deletePost }) => (
   <div >
     <div >
       <div className="center">
-        <Header as="h2" style={{ marginLeft: "15px" }}>{title}</Header>
+          <Header as="h2" style={{ marginLeft: "15px" }}>{title}</Header>
         <p>{body}</p>
         <Button 
           icon 
@@ -23,4 +23,4 @@ const Posts = ({ id, title, body, updatePost, deletePost }) => (
 )
 
 
-export default Posts;
+export default Post;
