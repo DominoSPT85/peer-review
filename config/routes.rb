@@ -3,7 +3,7 @@ Rails.application.routes.draw do
  
   namespace :api do
     resources :posts, only: [:index, :update] do
-      resources :answers, only: [index, :update]
+      resources :answers, only: [:index, :update]
     end
   end
 
