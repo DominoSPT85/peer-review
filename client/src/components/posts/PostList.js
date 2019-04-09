@@ -10,7 +10,7 @@ class PostList extends React.Component {
   state = {posts: [], }
 
   componentDidMount() {
-    axios.get("/api/postlist")
+    axios.get("/api/posts")
       .then( res => {
         this.setState({ posts: res.data, });
       })
@@ -19,7 +19,7 @@ class PostList extends React.Component {
       })
   }
     updatePosts = (id) => {
-      axios.put(`/api/postlist/${id}`)
+      axios.put(`/api/posts/${id}`)
       .then( res => {
         const posts = this.state.posts.map( p => {
         if (p.id === id)
@@ -31,7 +31,7 @@ class PostList extends React.Component {
     }
   
     deletePosts = (id) => {
-      axios.delete(`/api/postlist/${id}`)
+      axios.delete(`/api/posts/${id}`)
       .then( res => {
         const { posts } = this.state;
         this.setState({ posts: posts.filter(p => p.id !== id) })
@@ -46,7 +46,7 @@ class PostList extends React.Component {
           {
         this.state.posts.map( (d, i) => {
           return(
-          <posts
+          <Posts
           key={i}
           {...d}
           posts={this.state.posts}

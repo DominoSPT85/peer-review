@@ -9,7 +9,7 @@ class PostForm extends React.Component {
  handleSubmit = (e) => {
    e.preventDefault();
    const { title, body }  = this.state
-   axios.post('/api/postlist', { title, body })
+   axios.post('/api/posts', { title, body })
    .then( res => {
      this.props.history.push("/postlist")
    })
