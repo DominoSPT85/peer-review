@@ -1,5 +1,5 @@
 import React from 'react';
-import Posts from './Posts';
+import Post from './Post';
 import PostForm from './PostForm';
 import axios from "axios";
 import {Header} from 'semantic-ui-react';
@@ -53,7 +53,7 @@ class PostList extends React.Component {
           {
           this.state.posts.map( (d, i) => {
           return(
-          <Posts
+          <Post
           key={i}
           {...d}
           posts={this.state.posts}

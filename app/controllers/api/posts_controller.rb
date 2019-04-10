@@ -5,6 +5,12 @@ class Api::PostsController < ApplicationController
     render json: Post.all
   end
 
+  def show
+    @post = Post.find(params[:id])
+    render json: @post
+
+  end
+
   def create
     @post = current_user.posts.new(post_params)
     if @post.save

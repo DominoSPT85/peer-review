@@ -1,66 +1,67 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Answer from './Answer';
-import AnswerForm from './AnswerForm';
+import axios from "axios";
+import { Header } from 'semantic-ui-react';
 
-class AnswerList extends Component {
 
-  state = { answers: [] }
 
+class AnswerList extends React.Component { 
+  state = {answers: [], }
 
   componentDidMount() {
-    axios.get('/api/answers')
+    const id = this.props.id
+    axios.get(`/api/posts/${id}/answers`)
       .then( res => {
-        this.setState({ answers: res.data })
+        this.setState({ answers: res.data, });
       })
       .catch( err => {
-        console.log(err)
+        console.log(err);
       })
   }
-
-  displayAnswer = () => {
-    // editAnswer={this.editAnswer} add back in later once defined
-    return this.state.answers.map( d => <Answer key={d.id} {...d} />)
-  }
-
-  addAnswer = (answer) => {
-    axios.post(`/api/${post.id}/answers`,  answer )
-      .then( res => {
-        const { answers } = this.state
-        this.setState({ answers: [...answers, res.data] })
-      })
-      .catch( err => {
-        console.log(err)
-      })
-  }
-
-  editAnswer = (answer) => {
-    axios.put(`/api/answers/${answer.id}`, { answer })
-      .then( res => {
-        const answers = this.state.answers.map( p => {
-          if (p.id === answer.id)
-            return res.data
-          return p
-        })
-        this.setState({ answers })
-      })
-      .catch( err => {
-        console.log(err)
-      })
-  }
-
+    // updateAnswer = (id, post) => {
+    //   axios.put(`/api/posts/${post.id}/answers/${id}`)
+    //   .then( res => {
+    //     const answers = this.state.answers.map( a => {
+    //     if (a.id === id)
+    //       return res.data;
+    //     return a;
+    //   });
+    //     this.setState({ answers, });
+    //   })
+    // }
+  
+    // deletePost = (id, post) => {
+    //   axios.delete(`/api/posts/${post.id}/answers/${id}`)
+    //   .then( res => {
+    //     const { answers } = this.state;
+    //     this.setState({ posts: answers.filter(a => a.id !== id) })
+    //   })
+    // }
   render() {
-
-
     return(
       <div>
-      
-        { this.displayAnswer() }
-        <AnswerForm addAnswer={this.addAnswer} editAnswer={this.editAnswer} />
-    </div>
-
+        <Header as="h3" textAlign="center">All Answers</Header>
+        <ul>
+          {
+        this.state.answers.map( (d, i) => {
+          return(
+          <Answer
+          key={i}
+          {...d}
+          answers={this.state.answers}
+          updateAnswer={this.updateAnswer}
+          deleteAnswer={this.deleteAnswer}
+          />
+          )
+        })
+        
+          }
+        </ul>
+        
+      </div>
     )
   }
 }
-
-export default AnswerList
+  
+ 
+export default AnswerList;
