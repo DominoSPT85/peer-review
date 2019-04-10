@@ -1,22 +1,14 @@
 import React from "react";
 import { Form, } from "semantic-ui-react";
-import axios from 'axios';
-
 
 class PostForm extends React.Component {
  state = { title: '', body: '' };
 
  handleSubmit = (e) => {
-   e.preventDefault();
-   const { title, body }  = this.state
-   axios.post('/api/postlist', { title, body })
-   .then( res => {
-     this.props.history.push("/postlist")
-   })
-   .catch( err => {
-     console.log(err);
-   })
-   this.setState({ title: "", body: "" });
+  e.preventDefault();
+  const { title, body }  = this.state
+  this.props.addPost(title, body);
+  this.setState({ title: '', body: '' })
  }
 
  handleChange = (e) => {
@@ -42,7 +34,7 @@ class PostForm extends React.Component {
            onChange={this.handleChange}
          />
         </Form.Group>
-        <Form.Button>Submit</Form.Button>
+      <Form.Button>Submit</Form.Button>
      </Form>
    )
  }
