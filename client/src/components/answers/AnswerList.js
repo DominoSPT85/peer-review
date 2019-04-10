@@ -10,6 +10,7 @@ class AnswerList extends React.Component {
 
   componentDidMount() {
     const id = this.props.id
+    debugger
     axios.get(`/api/posts/${id}/answers`)
       .then( res => {
         this.setState({ answers: res.data, });

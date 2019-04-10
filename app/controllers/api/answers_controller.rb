@@ -35,7 +35,7 @@ class Api::AnswersController < ApplicationController
   end
 
   def set_post
-    @post = Posts.find(params[:post_id])
+    @post = Post.find(params[:post_id])
   end
 
  

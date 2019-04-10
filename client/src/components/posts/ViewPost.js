@@ -31,10 +31,10 @@ class ViewPost extends React.Component {
       <hr />
 
       <Header as='h3'>Answers</Header>
-      <AnswerList />
+      <AnswerList id={parseInt(this.props.match.params.id)} />
       <hr />
       <p>Post an answer:</p>
-      <AnswerForm addAnswers={this.addAnswers} id={this.state.post.id}/>
+      <AnswerForm addAnswers={this.addAnswers} id={parseInt(this.props.match.params.id)}/>
       </>
     )
   }

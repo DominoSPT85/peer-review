@@ -6,8 +6,7 @@ const Post = ({ id, title, body, updatePost, deletePost, post }) => (
   <div >
     <div >
       <div className="center">
-      <Link
-       to={{
+      <Link to={{
          pathname: `/postlist/${id}`,
          state: {
            id: id,
