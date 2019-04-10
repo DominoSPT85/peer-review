@@ -6,8 +6,7 @@ class AnswerForm extends Component {
   state = { body: ''}
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    const id = this.props.match.params.id
+    const id = this.props.id
     const { body }  = this.state
     axios.post(`/api/posts/${id}/answers`, { body })
     .then( res => {

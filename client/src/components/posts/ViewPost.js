@@ -10,9 +10,11 @@ class ViewPost extends React.Component {
   state = {post: '', }
 
   componentDidMount() {
-    const id = this.props.match.params.id
+    const id = parseInt(this.props.match.params.id)
     axios.get(`/api/posts/${id}`)
+
       .then( res => {
+        
         this.setState({ post: res.data, });
       })
       .catch( err => {
@@ -24,15 +26,15 @@ class ViewPost extends React.Component {
     const { post } = this.state
     return (
       <>
-      <Post key={post.id} {...post} />
+      <Post key={post.id} {...post} post={post} />
 
       <hr />
 
       <Header as='h3'>Answers</Header>
-      {/* <AnswerList /> */}
+      <AnswerList />
       <hr />
       <p>Post an answer:</p>
-      <AnswerForm addAnswers={this.addAnswers} />
+      <AnswerForm addAnswers={this.addAnswers} id={this.state.post.id}/>
       </>
     )
   }

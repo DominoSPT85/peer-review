@@ -9,8 +9,8 @@ class AnswerList extends React.Component {
   state = {answers: [], }
 
   componentDidMount() {
-    const post = this.props.match.params.post.id
-    axios.get(`/api/posts/${post.id}/answers`)
+    const id = this.props.id
+    axios.get(`/api/posts/${id}/answers`)
       .then( res => {
         this.setState({ answers: res.data, });
       })
