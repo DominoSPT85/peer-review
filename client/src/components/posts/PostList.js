@@ -18,6 +18,13 @@ class PostList extends React.Component {
         console.log(err);
       })
   }
+    addPost = (title, body) =>{
+      axios.post('/api/posts', { title, body })
+      .then( res => {
+        const { posts } = this.state;
+        this.setState({ posts: [...posts, res.data] });
+      })
+    }
     updatePost = (id) => {
       axios.put(`/api/posts/${id}`)
       .then( res => {
@@ -40,11 +47,11 @@ class PostList extends React.Component {
   render() {
     return(
       <div>
-        <PostForm addPosts={this.addPosts} />
+        <PostForm addPost={this.addPost} />
         <Header as="h3" textAlign="center">All posts</Header>
         <ul>
           {
-        this.state.posts.map( (d, i) => {
+          this.state.posts.map( (d, i) => {
           return(
           <Posts
           key={i}
