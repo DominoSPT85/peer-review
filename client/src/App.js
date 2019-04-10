@@ -8,7 +8,10 @@ import { Switch, Route, } from 'react-router-dom';
 import { Container, } from "semantic-ui-react";
 import FetchUser from './components/FetchUser';
 import ProtectedRoute from './components/ProtectedRoute';
+import AnswerForm from './components/answers/AnswerForm';
+import AnswerList from './components/answers/AnswerList';
 import PostList from './components/posts/PostList'
+
 
 const App = () => (
   <Fragment>
@@ -19,6 +22,7 @@ const App = () => (
           <ProtectedRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <ProtectedRoute exact path="/answerlist" component={AnswerList} />
           <Route exact path="/postlist" component={PostList} />
           <Route component={NoMatch} />
         </Switch>
