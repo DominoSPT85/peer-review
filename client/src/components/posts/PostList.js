@@ -18,7 +18,7 @@ class PostList extends React.Component {
        console.log(err);
      })
  }
-   addPost = (title, body) =>{
+   addPost = (title, body) => {
      axios.post('/api/posts', { title, body })
      .then( res => {
        const { posts } = this.state;

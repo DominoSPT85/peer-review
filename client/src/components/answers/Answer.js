@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Icon} from 'semantic-ui-react';
 
-const Answer = ({ id, body, updateAnswer, deleteAnswer }) => (
+const Answer = ({ id, body, post_id, updateAnswer, deleteAnswer }) => (
   <div >
     <div >
       <div className="center">
@@ -10,7 +10,7 @@ const Answer = ({ id, body, updateAnswer, deleteAnswer }) => (
           icon 
           color="red" 
           size="tiny" 
-          onClick={() => deleteAnswer(id)} 
+          onClick={() => deleteAnswer(id, post_id)} 
           style={{ marginLeft: "15px", }}
           >
           <Icon name="trash" />
