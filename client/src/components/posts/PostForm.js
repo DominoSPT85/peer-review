@@ -21,6 +21,7 @@ class PostForm extends React.Component {
        <Form.Group widths="equal">
          <Form.Input
            label="Title"
+           required
            placeholder="Title"
            name="title"
            value={this.state.title}
@@ -28,6 +29,7 @@ class PostForm extends React.Component {
          />
          <Form.TextArea
            label="Question"
+           required
            placeholder="Question"
            name="body"
            value={this.state.body}

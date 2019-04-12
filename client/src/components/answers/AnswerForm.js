@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-import { Button, Comment, Form, Header } from 'semantic-ui-react';
-import axios from 'axios';
+import { Form } from 'semantic-ui-react';
 
 class AnswerForm extends Component {
   state = { body: ''}
 
   handleSubmit = (e) => {
-    const id = this.props.id
+    e.preventDefault();
     const { body }  = this.state
-    axios.post(`/api/posts/${id}/answers`, { body })
-    .then( res => {
-      this.props.history.push("/viewpost")
-    })
-    .catch( err => {
-      console.log(err);
-    })
-    this.setState({ body: "" });
-  }
+    this.props.addAnswer(body);
+    this.setState({ body: '' })
+   }
  
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value, });
@@ -29,6 +22,7 @@ class AnswerForm extends Component {
   
       <Form.TextArea
            label="Answer"
+           required
            placeholder="Type your answer here"
            name="body"
            value={body}
