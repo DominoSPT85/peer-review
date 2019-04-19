@@ -26,8 +26,8 @@ class PostList extends React.Component {
      })
    }
 
-   editPost = (id) => {
-     axios.put(`/api/posts/${id}`)
+   editPost = (id, post) => {
+    axios.put(`/api/posts/${id}`, post)
      .then( res => {
        const posts = this.state.posts.map( p => {
        if (p.id === id)
@@ -46,13 +46,11 @@ class PostList extends React.Component {
      })
    }
 
-   toggleEdit = () => this.setState({ editing: !this.state.editing, });
-
  render() {
-  const { title, body, editPost } = this.props
+  const { editPost } = this.props
    return(
      <div>
-       { this.state.editing ? <PostForm {...this.props} toggleEdit={this.toggleEdit} editPost={editPost}/> : <PostForm addPost={this.addPost} /> }
+       <PostForm {...this.props} editPost={editPost} addPost={this.addPost} />
        <Header as="h3" textAlign="center">All posts</Header>
        <Divider />
        <ul>

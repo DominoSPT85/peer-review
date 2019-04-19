@@ -22,8 +22,11 @@ class Api::PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
-    @post.update
-    render json: @post
+    if @post.update(post_params)
+      render json: @post
+    else
+      render json: { errors: @post.errors }, status: :unprocessable_entity 
+    end
   end
 
   def destroy
