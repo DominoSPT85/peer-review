@@ -2,7 +2,7 @@ import React from 'react';
 import {Header, Button, Icon} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-const Post = ({ id, title, body, updatePost, deletePost, post }) => (
+const Post = ({ id, title, body, toggleEdit, deletePost, post }) => (
   <div >
     <div >
       <div className="center">
@@ -16,6 +16,15 @@ const Post = ({ id, title, body, updatePost, deletePost, post }) => (
        <Header as="h2" style={{ marginLeft: "15px" }}>{title}</Header>
        </Link>
         <p>{body}</p>
+          <Button 
+          icon 
+          color="blue" 
+          size="tiny" 
+          onClick={() => toggleEdit(id)} 
+          style={{ marginLeft: "15px", }}
+          >
+          <Icon name="edit" />
+        </Button>
         <Button 
           icon 
           color="red" 

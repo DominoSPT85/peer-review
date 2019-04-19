@@ -4,12 +4,25 @@ import { Form, } from "semantic-ui-react";
 class PostForm extends React.Component {
  state = { title: '', body: '' };
 
- handleSubmit = (e) => {
-  e.preventDefault();
-  const { title, body }  = this.state
-  this.props.addPost(title, body);
-  this.setState({ title: '', body: '' })
- }
+//  handleSubmit = (e) => {
+//   e.preventDefault();
+//   const { title, body }  = this.state
+//   this.props.addPost(title, body);
+//   this.setState({ title: '', body: '' })
+//  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { title, body } = this.state
+    if (this.props.id) {
+      this.props.editPost({id: this.props.id, ...this.state});
+      this.props.toggleEdit()
+    } 
+    else {
+      this.props.addPost(title, body);
+    }
+    this.setState({ title: "", body: "", });
+  }
 
  handleChange = (e) => {
    this.setState({ [e.target.name]: e.target.value, });
