@@ -4,7 +4,6 @@ class Api::AnswersController < ApplicationController
   
   def index
     render json: @post.answers.all
-   
   end
 
   def create
@@ -24,7 +23,7 @@ class Api::AnswersController < ApplicationController
   end
 
   def destroy
-    @answers.find(params[:id]).destroy
+    Answer.find(params[:id]).destroy
     render json: { message: 'Answer deleted' }
   end
 

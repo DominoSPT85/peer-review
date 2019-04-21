@@ -1,10 +1,17 @@
 import React from 'react';
-import { Header, } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { Header, Container } from 'semantic-ui-react';
+import PostList from './posts/PostList';
+
 
 const Home = () => (
-  <Header as="h3" textAlign="center">Peer Review</Header>
-
+  <>
+  <Container>
+    <br />
+    <Header as="h1" textAlign="center">Peer Review</Header>
+  </Container>
+  <PostList/>
+  </>
 )
 
 
