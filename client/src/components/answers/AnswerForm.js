@@ -10,7 +10,7 @@ class AnswerForm extends Component {
     this.props.addAnswer(body);
     this.setState({ body: '' })
    }
- 
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value, });
   };
@@ -18,8 +18,9 @@ class AnswerForm extends Component {
   render() {
     const { body } = this.state
     return(
-      <Form onSubmit={this.handleSubmit}>
-  
+      <Form
+      onSubmit={this.handleSubmit}>
+
       <Form.TextArea
            label="Answer"
            required

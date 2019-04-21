@@ -11,9 +11,7 @@ class ViewPost extends React.Component {
   componentDidMount() {
     const id = parseInt(this.props.match.params.id)
     axios.get(`/api/posts/${id}`)
-
       .then( res => {
-        
         this.setState({ post: res.data, });
       })
       .catch( err => {

@@ -7,7 +7,7 @@ import {Header, Divider, } from 'semantic-ui-react';
 
 
 class PostList extends React.Component {
- state = {posts: [], }
+ state = {posts: [], editing: false }
 
  componentDidMount() {
    axios.get("/api/posts")
@@ -26,8 +26,8 @@ class PostList extends React.Component {
      })
    }
 
-   updatePost = (id) => {
-     axios.put(`/api/posts/${id}`)
+   editPost = (id, post) => {
+    axios.put(`/api/posts/${id}`, post)
      .then( res => {
        const posts = this.state.posts.map( p => {
        if (p.id === id)
@@ -45,12 +45,14 @@ class PostList extends React.Component {
        this.setState({ posts: posts.filter(p => p.id !== id) })
      })
    }
+
  render() {
+  const { editPost } = this.props
    return(
      <div>
-       <PostForm addPost={this.addPost} />
-       <Divider />
+       <PostForm {...this.props} editPost={editPost} addPost={this.addPost} />
        <Header as="h3" textAlign="center">All posts</Header>
+       <Divider />
        <ul>
          {
          this.state.posts.map( (d, i) => {
@@ -59,7 +61,8 @@ class PostList extends React.Component {
          key={i}
          {...d}
          posts={this.state.posts}
-         updatePost={this.updatePost}
+         toggleEdit={this.toggleEdit}
+         editPost={this.editPost}
          deletePost={this.deletePost}
          />
          )

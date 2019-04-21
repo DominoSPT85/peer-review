@@ -5,7 +5,7 @@ import { Header } from 'semantic-ui-react';
 import AnswerForm from './AnswerForm'
 
 
-class AnswerList extends React.Component { 
+class AnswerList extends React.Component {
   state = {answers: [], }
 
   componentDidMount() {
@@ -41,7 +41,7 @@ class AnswerList extends React.Component {
     //     this.setState({ answers, });
     //   })
     // }
-  
+
     deleteAnswer = (id, post) => {
       axios.delete(`/api/posts/${post}/answers/${id}`)
       .then( res => {
@@ -67,14 +67,14 @@ class AnswerList extends React.Component {
           />
           )
         })
-        
+
           }
         </ul>
-        
+
       </div>
     )
   }
 }
-  
- 
+
+
 export default AnswerList;
