@@ -9,8 +9,9 @@ const Home = () => (
   <Container>
     <br />
     <Header as="h1" textAlign="center">Peer Review</Header>
+    <PostList/>
   </Container>
-  <PostList/>
+
   </>
 )
 
