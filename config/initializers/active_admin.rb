@@ -154,10 +154,6 @@ ActiveAdmin.setup do |config|
   # https://github.com/svenfuchs/i18n/blob/master/lib%2Fi18n%2Fbackend%2Fbase.rb#L52
   #
   config.localize_format = :long
-  meta_tags_options = { viewport: 'width=device-width, initial-scale=1' }
-config.meta_tags = meta_tags_options
-config.meta_tags_for_logged_out_pages = meta_tags_options
-
 
 
   # == Setting a Favicon
