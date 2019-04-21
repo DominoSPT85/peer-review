@@ -10,6 +10,7 @@ import FetchUser from './components/FetchUser';
 import ProtectedRoute from './components/ProtectedRoute';
 import PostList from './components/posts/PostList';
 import ViewPost from './components/posts/ViewPost';
+import Upload from './components/upload/Upload';
 
 
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route exact path="/register" component={Register} />
           <Route exact path="/postlist" component={PostList} />
           <ProtectedRoute exact path='/postlist/:id' component={ViewPost} />
+          <ProtectedRoute exact path='/upload' component={Upload} />
           <Route component={NoMatch} />
         </Switch>
       </Container>

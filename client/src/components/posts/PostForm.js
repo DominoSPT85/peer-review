@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, } from "semantic-ui-react";
 
+
 class PostForm extends React.Component {
  state = { title: '', body: '' };
 
@@ -28,6 +29,7 @@ class PostForm extends React.Component {
            onChange={this.handleChange}
          />
          <Form.TextArea
+         id="Question"
            label="Question"
            required
            placeholder="Question"
@@ -35,6 +37,9 @@ class PostForm extends React.Component {
            value={this.state.body}
            onChange={this.handleChange}
          />
+         
+   
+         
         </Form.Group>
       <Form.Button>Submit</Form.Button>
      </Form>
