@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Comment, Form, Header } from 'semantic-ui-react';
+import { Button, Comment, Form, Header, Grid } from 'semantic-ui-react';
 import axios from 'axios';
 
 class AnswerForm extends Component {
@@ -17,7 +17,7 @@ class AnswerForm extends Component {
     })
     this.setState({ body: "" });
   }
- 
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value, });
   };
@@ -25,8 +25,9 @@ class AnswerForm extends Component {
   render() {
     const { body } = this.state
     return(
-      <Form onSubmit={this.handleSubmit}>
-  
+      <Form
+      onSubmit={this.handleSubmit}>
+
       <Form.TextArea
            label="Answer"
            placeholder="Type your answer here"

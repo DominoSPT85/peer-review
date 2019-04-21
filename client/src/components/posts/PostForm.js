@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, } from "semantic-ui-react";
+import { Form, Grid, Divider, } from "semantic-ui-react";
 
 class PostForm extends React.Component {
  state = { title: '', body: '' };
@@ -17,25 +17,34 @@ class PostForm extends React.Component {
 
  render() {
    return (
-     <Form onSubmit={this.handleSubmit}>
-       <Form.Group widths="equal">
-         <Form.Input
-           label="Title"
-           placeholder="Title"
-           name="title"
-           value={this.state.title}
-           onChange={this.handleChange}
-         />
-         <Form.TextArea
-           label="Question"
-           placeholder="Question"
-           name="body"
-           value={this.state.body}
-           onChange={this.handleChange}
-         />
-        </Form.Group>
-      <Form.Button>Submit</Form.Button>
-     </Form>
+
+
+       <Form  onSubmit={this.handleSubmit}>
+         <Form.Group widths="equal">
+           <Form.Input
+             label="Title"
+             placeholder="Title"
+             name="title"
+             value={this.state.title}
+             onChange={this.handleChange}
+           />
+
+
+           <Form.TextArea
+             label="Question"
+             placeholder="Question"
+             name="body"
+             value={this.state.body}
+             onChange={this.handleChange}
+           />
+          </Form.Group>
+
+            <Divider horizontal></Divider>
+
+        <Form.Button>Submit</Form.Button>
+       </Form>
+
+
    )
  }
 }

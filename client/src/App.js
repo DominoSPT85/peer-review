@@ -10,7 +10,7 @@ import FetchUser from './components/FetchUser';
 import ProtectedRoute from './components/ProtectedRoute';
 import PostList from './components/posts/PostList';
 import ViewPost from './components/posts/ViewPost';
-
+import { Link } from 'react-router-dom';
 
 
 const App = () => (

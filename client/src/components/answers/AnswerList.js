@@ -1,11 +1,11 @@
 import React from 'react';
 import Answer from './Answer';
 import axios from "axios";
-import { Header } from 'semantic-ui-react';
+import { Header, Grid } from 'semantic-ui-react';
 
 
 
-class AnswerList extends React.Component { 
+class AnswerList extends React.Component {
   state = {answers: [], }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class AnswerList extends React.Component {
     //     this.setState({ answers, });
     //   })
     // }
-  
+
     // deletePost = (id, post) => {
     //   axios.delete(`/api/posts/${post.id}/answers/${id}`)
     //   .then( res => {
@@ -55,14 +55,14 @@ class AnswerList extends React.Component {
           />
           )
         })
-        
+
           }
         </ul>
-        
+
       </div>
     )
   }
 }
-  
- 
+
+
 export default AnswerList;
