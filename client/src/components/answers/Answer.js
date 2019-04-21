@@ -1,21 +1,32 @@
 import React from 'react';
-import {Button, Icon} from 'semantic-ui-react';
+import {Button, Icon, Grid, Divider} from 'semantic-ui-react';
 
 const Answer = ({ id, body, post_id, updateAnswer, deleteAnswer }) => (
   <div >
     <div >
-      <div textAlign="center">
-        <p>{body}</p>
-        <Button
-          icon
-          color="red"
-          size="tiny"
-          onClick={() => deleteAnswer(id, post_id)}
-          style={{ marginLeft: "15px", }}
-          >
-          <Icon name="trash" />
-        </Button>
+
+      <div>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={15}>
+            <p>{body}</p>
+          </Grid.Column>
+
+          <Grid.Column>
+            <Button
+              icon
+              inverted color="red"
+              floated="right"
+              size="mini"
+              onClick={() => deleteAnswer(id, post_id)}
+              >
+              <Icon name="trash" />
+              </Button>
+          </Grid.Column>
+          </Grid.Row>
+          </Grid>
       </div>
+
     </div>
 
   </div>
