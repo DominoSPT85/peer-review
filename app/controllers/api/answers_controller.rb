@@ -7,19 +7,22 @@ class Api::AnswersController < ApplicationController
   end
 
   def create
-    answer = @post.answers.new(answer_params)
+    @answer = @post.answers.new(answer_params)
     answer.user_id = current_user.id
     if answer.save
-      render json: answer
+      render json: @answer
     else
-      render json: { errors: answer.errors }, status: :unprocessable_entity 
+      render json: { errors: @answer.errors }, status: :unprocessable_entity 
     end
   end
 
   def update
-    answer = @post.answers.find(params[:id])
-    answer.update
-    render json: answer
+    @answer = @post.answers.find(params[:id])
+    if @answer.update(answer_params)
+      render json: @answer
+    else
+      render json: { errors: @answer.errors }, status: :unprocessable_entity
+    end
   end
 
   def destroy

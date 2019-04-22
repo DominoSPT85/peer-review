@@ -7,7 +7,7 @@ import {Header, Divider, } from 'semantic-ui-react';
 
 
 class PostList extends React.Component {
- state = {posts: [], editing: false }
+ state = { posts: [], editing: false }
 
  componentDidMount() {
    axios.get("/api/posts")
@@ -70,7 +70,6 @@ class PostList extends React.Component {
 
          }
        </ul>
-
      </div>
    )
  }

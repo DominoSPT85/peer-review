@@ -6,7 +6,7 @@ import AnswerForm from './AnswerForm'
 
 
 class AnswerList extends React.Component {
-  state = {answers: [], }
+  state = { answers: [], editing: false }
 
   componentDidMount() {
     const id = this.props.id
@@ -30,29 +30,31 @@ class AnswerList extends React.Component {
     })
   }
 
-    // updateAnswer = (id, post) => {
-    //   axios.put(`/api/posts/${post.id}/answers/${id}`)
-    //   .then( res => {
-    //     const answers = this.state.answers.map( a => {
-    //     if (a.id === id)
-    //       return res.data;
-    //     return a;
-    //   });
-    //     this.setState({ answers, });
-    //   })
-    // }
+  editAnswer = (id, post, answer) => {
+    axios.put(`/api/posts/${post}/answers/${id}`, answer)
+    .then( res => {
+      const answers = this.state.answers.map( a => {
+      if (a.id === id)
+        return res.data;
+      return a;
+    });
+      this.setState({ answers, });
+    })
+  }
 
-    deleteAnswer = (id, post) => {
-      axios.delete(`/api/posts/${post}/answers/${id}`)
-      .then( res => {
-        const { answers } = this.state;
-        this.setState({ answers: answers.filter(a => a.id !== id) })
-      })
-    }
+  deleteAnswer = (id, post) => {
+    axios.delete(`/api/posts/${post}/answers/${id}`)
+    .then( res => {
+      const { answers } = this.state;
+      this.setState({ answers: answers.filter(a => a.id !== id) })
+    })
+  }
+  
   render() {
+    const { editAnswer } = this.props
     return(
       <div>
-        <AnswerForm addAnswer={this.addAnswer} />
+        <AnswerForm {...this.props} editAnswer={editAnswer} addAnswer={this.addAnswer} />
         <Header as="h3" textAlign="center">All Answers</Header>
         <ul>
           {
@@ -62,7 +64,8 @@ class AnswerList extends React.Component {
           key={i}
           {...a}
           answers={this.state.answers}
-          updateAnswer={this.updateAnswer}
+          editAnswer={this.editAnswer}
+          toggleEdit={this.toggleEdit}
           deleteAnswer={this.deleteAnswer}
           />
           )
