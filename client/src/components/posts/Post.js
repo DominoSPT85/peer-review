@@ -1,61 +1,71 @@
 import React, { useState } from 'react';
-import {Header, Button, Icon, Divider, Grid } from 'semantic-ui-react';
+import {Header, Button, Icon, Card, Grid, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PostForm from './PostForm';
 
 const Post = ({ id, title, body, editPost, deletePost, post }) => {
   const [editing, toggleEdit] = useState(false)
 
+  // this.setState({ editing: false })
+
+
   return (
     <div>
-      <div>
-        <Grid>
-        <Grid.Row>
-          <Grid.Column width={15}>
-            <div className="center">
+      <Grid  divided>
+      <Grid.Column>
+            <Card>
+              <div className="center">
               <Link to={{
                 pathname: `/postlist/${id}`,
-                  state: {
-                    id: id,
-                    post: {...post}
-                  }
+                state: {
+                  id: id,
+                  post: {...post}
+                }
               }}>
-
-                <Header as="h2">{title}</Header>
-              </Link>
-              <p>{body}</p>
-            </div>
-          </Grid.Column>
-          <Grid.Column>
-            <Button
+              <Card.Header>{title}</Card.Header>
+              <Button
               icon
-              inverted color="blue invert"
+              inverted color="blue"
               floated="right"
               size="mini"
               onClick={() => toggleEdit(!editing)}
-            >
+              >
               <Icon name="edit" />
             </Button>
-            <Divider hidden/>
-
             <Button
-                  icon
-                  inverted color="red"
-                  floated="right"
-                  size="mini"
-                  onClick={() => deletePost(id)}
-                  >
-                    <Icon name="trash" />
+              icon
+              inverted color="red"
+              floated="right"
+              size="mini"
+              onClick={() => deletePost(id)}
+
+              >
+              <Icon name="trash" />
             </Button>
-          </Grid.Column>
-        </Grid.Row>
-        
+        <Divider hidden/>
+        <Divider/>
 
-      </Grid>
-      { editing ? <PostForm id={id} title={title} body={body} editPost={editPost} deletePost={deletePost} post={post} toggleEdit={toggleEdit} editing={editing} /> : null }
+        </Link>
+        <Card.Content>
+          <Card.Description>{body}</Card.Description>
 
+          <Divider/>
+          <Grid>
+            <Grid.Row>
+              <Button> Upload </Button>
+              <Button color="blue"> Post Answer </Button>
+              <Button color="blue"> View Answers </Button>
+            </Grid.Row>
+          </Grid>
+
+          </Card.Content>
+        </div>
+        { editing ? <PostForm id={id} title={title} body={body} editPost={editPost} deletePost={deletePost} post={post} toggleEdit={toggleEdit} editing={editing} /> : null }
+        </Card>
+        <Divider hidden />
+        </Grid.Column>
+        </Grid>
     </div>
-  </div>
   )
 }
 

@@ -54,7 +54,7 @@ class AnswerList extends React.Component {
   render() {
     return(
       <div>
-        <AnswerForm {...this.props} editAnswer={this.editAnswer} addAnswer={this.addAnswer} />
+        <AnswerForm addAnswer={this.addAnswer} />
         <Header as="h3" textAlign="center">All Answers</Header>
         <ul>
           {
