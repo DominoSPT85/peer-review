@@ -11,13 +11,6 @@ class AnswerForm extends Component {
     }
   }
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const { body }  = this.state
-  //   this.props.addAnswer(body);
-  //   this.setState({ body: '' })
-  //  }
-
   handleSubmit = (e) => {
     e.preventDefault();
     const { body } = this.state

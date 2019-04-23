@@ -31,7 +31,6 @@ const Answer = ({ id, body, post_id, editAnswer, deleteAnswer }) => {
         </div>
         { editing ? <AnswerForm id={id} body={body} editAnswer={editAnswer} deleteAnswer={deleteAnswer} post_id={post_id} toggleEdit={toggleEdit} editing={editing} /> : null }
       </div>
-
     </div>
   )
 }

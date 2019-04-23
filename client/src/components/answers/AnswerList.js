@@ -30,8 +30,9 @@ class AnswerList extends React.Component {
     })
   }
 
-  editAnswer = (id, post, answer) => {
-    axios.put(`/api/posts/${post}/answers/${id}`, answer)
+  editAnswer = (id, answer) => {
+    const postId = this.props.id
+    axios.put(`/api/posts/${postId}/answers/${id}`, answer)
     .then( res => {
       const answers = this.state.answers.map( a => {
       if (a.id === id)
@@ -49,12 +50,11 @@ class AnswerList extends React.Component {
       this.setState({ answers: answers.filter(a => a.id !== id) })
     })
   }
-  
+
   render() {
-    const { editAnswer } = this.props
     return(
       <div>
-        <AnswerForm {...this.props} editAnswer={editAnswer} addAnswer={this.addAnswer} />
+        <AnswerForm {...this.props} editAnswer={this.editAnswer} addAnswer={this.addAnswer} />
         <Header as="h3" textAlign="center">All Answers</Header>
         <ul>
           {
@@ -73,7 +73,6 @@ class AnswerList extends React.Component {
 
           }
         </ul>
-
       </div>
     )
   }
