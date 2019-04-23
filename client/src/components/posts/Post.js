@@ -49,9 +49,11 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
             </Button>
           </Grid.Column>
         </Grid.Row>
-        { editing ? <PostForm id={id} title={title} body={body} editPost={editPost} deletePost={deletePost} post={post} toggleEdit={toggleEdit} editing={editing} /> : null }
+        
 
       </Grid>
+      { editing ? <PostForm id={id} title={title} body={body} editPost={editPost} deletePost={deletePost} post={post} toggleEdit={toggleEdit} editing={editing} /> : null }
+
     </div>
   </div>
   )
