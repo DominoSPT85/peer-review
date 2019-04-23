@@ -7,7 +7,7 @@ import {Header, Divider, } from 'semantic-ui-react';
 
 
 class PostList extends React.Component {
- state = {posts: [], editing: false }
+ state = { posts: [], editing: false }
 
  componentDidMount() {
    axios.get("/api/posts")
@@ -47,10 +47,9 @@ class PostList extends React.Component {
    }
 
  render() {
-  const { editPost } = this.props
    return(
      <div>
-       <PostForm {...this.props} editPost={editPost} addPost={this.addPost} />
+       <PostForm {...this.props} editPost={this.editPost} addPost={this.addPost} />
        <Header as="h3" textAlign="center">All posts</Header>
        <Divider />
        <ul>
@@ -70,7 +69,6 @@ class PostList extends React.Component {
 
          }
        </ul>
-
      </div>
    )
  }

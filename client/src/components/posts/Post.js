@@ -6,9 +6,6 @@ import PostForm from './PostForm';
 const Post = ({ id, title, body, editPost, deletePost, post }) => {
   const [editing, toggleEdit] = useState(false)
 
-  // this.setState({ editing: false })
-
-
   return (
     <div>
       <div>
@@ -48,7 +45,6 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
         </div>
         { editing ? <PostForm id={id} title={title} body={body} editPost={editPost} deletePost={deletePost} post={post} toggleEdit={toggleEdit} editing={editing} /> : null }
       </div>
-
     </div>
   )
 }
