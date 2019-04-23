@@ -6,9 +6,6 @@ import PostForm from './PostForm';
 const Post = ({ id, title, body, editPost, deletePost, post }) => {
   const [editing, toggleEdit] = useState(false)
 
-  // this.setState({ editing: false })
-
-
   return (
     <div>
       <div>
@@ -40,7 +37,7 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
               <Icon name="edit" />
             </Button>
             <Divider hidden/>
-          
+
             <Button
                   icon
                   inverted color="red"
