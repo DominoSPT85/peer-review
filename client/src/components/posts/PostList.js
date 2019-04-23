@@ -2,7 +2,7 @@ import React from 'react';
 import Post from './Post';
 import PostForm from './PostForm';
 import axios from "axios";
-import {Header, Divider, } from 'semantic-ui-react';
+import {Header, Divider, Grid, Segment } from 'semantic-ui-react';
 
 
 
@@ -52,23 +52,30 @@ class PostList extends React.Component {
        <PostForm {...this.props} editPost={this.editPost} addPost={this.addPost} />
        <Header as="h3" textAlign="center">All posts</Header>
        <Divider />
-       <ul>
-         {
-         this.state.posts.map( (d, i) => {
-         return(
-         <Post
-         key={i}
-         {...d}
-         posts={this.state.posts}
-         toggleEdit={this.toggleEdit}
-         editPost={this.editPost}
-         deletePost={this.deletePost}
-         />
-         )
-       })
+        <Grid padding columns='equal' >
 
-         }
-       </ul>
+
+
+               {
+               this.state.posts.map( (d, i) => {
+               return(
+
+               <Post
+               key={i}
+               {...d}
+               posts={this.state.posts}
+               toggleEdit={this.toggleEdit}
+               editPost={this.editPost}
+               deletePost={this.deletePost}
+               />
+
+               )
+             })
+
+               }
+            
+
+       </Grid>
      </div>
    )
  }
