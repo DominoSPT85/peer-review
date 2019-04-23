@@ -8,8 +8,8 @@ class Api::AnswersController < ApplicationController
 
   def create
     @answer = @post.answers.new(answer_params)
-    answer.user_id = current_user.id
-    if answer.save
+    @answer.user_id = current_user.id
+    if @answer.save
       render json: @answer
     else
       render json: { errors: @answer.errors }, status: :unprocessable_entity 
