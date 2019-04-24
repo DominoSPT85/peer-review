@@ -49,7 +49,7 @@ class PostList extends React.Component {
  render() {
    return(
      <div>
-       <PostForm editPost={this.editPost} addPost={this.addPost} />
+       <PostForm addPost={this.addPost} />
        <Header as="h3" textAlign="center">All posts</Header>
        <Divider />
        <ul>

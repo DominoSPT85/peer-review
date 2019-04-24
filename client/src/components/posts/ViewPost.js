@@ -23,7 +23,7 @@ class ViewPost extends React.Component {
     const { post } = this.state
     return (
       <>
-      <ShowPost key={post.id} {...post} post={post} editPost={this.props.location.state.editPost}/>
+      <ShowPost key={post.id} {...post} post={post} />
 
       <hr />
 
