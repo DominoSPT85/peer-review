@@ -42,7 +42,9 @@ class AnswerForm extends Component {
            value={body}
            onChange={this.handleChange}
          />
-         <Form.Button>Submit</Form.Button>
+         <Form.Button>
+          Submit
+         </Form.Button>
       </Form>
     )
   }

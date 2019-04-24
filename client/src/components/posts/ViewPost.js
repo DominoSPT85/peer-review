@@ -1,7 +1,7 @@
 import React from 'react';
 import ShowPost from './ShowPost';
 import AnswerList from '../answers/AnswerList';
-import { Header } from 'semantic-ui-react';
+import { Header, Divider } from 'semantic-ui-react';
 import axios from 'axios';
 
 
@@ -23,8 +23,10 @@ class ViewPost extends React.Component {
     const { post } = this.state
     return (
       <>
+      <Divider hidden/>
+      <Divider hidden/>
       <ShowPost key={post.id} {...post} post={post} />
-
+      
       <hr />
 
       <Header as='h3'>Answers</Header>

@@ -1,7 +1,7 @@
 class Api::AnswersController < ApplicationController
   before_action :set_post
   before_action :authenticate_user!
-  
+
   def index
     render json: @post.answers.all
   end
@@ -12,7 +12,7 @@ class Api::AnswersController < ApplicationController
     if @answer.save
       render json: @answer
     else
-      render json: { errors: @answer.errors }, status: :unprocessable_entity 
+      render json: { errors: @answer.errors }, status: :unprocessable_entity
     end
   end
 
@@ -40,5 +40,5 @@ class Api::AnswersController < ApplicationController
     @post = Post.find(params[:post_id])
   end
 
- 
+
 end
