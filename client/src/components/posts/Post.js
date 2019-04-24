@@ -11,7 +11,7 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
       <Grid  divided>
       <Grid.Column>
             <Card>
-              <div className="center">
+              <div class='ui center aligned top segment'>
               <Link to={{
                 pathname: `/postlist/${id}`,
                 state: {
@@ -45,12 +45,28 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
         <Card.Content>
           <Card.Description>{body}</Card.Description>
 
-          <Divider/>
+
           <Grid>
             <Grid.Row>
-              <Button> Upload </Button>
-              <Button color="blue"> Post Answer </Button>
-              <Button color="blue"> View Answers </Button>
+              < div class="ui bottom segment">
+              <a href='/upload'><Button size="mini"> Upload </Button></a>
+              <Link to={{
+                pathname: `/postlist/${id}`,
+                state: {
+                  id: id,
+                  post: {...post}
+                }
+              }}>'<Button color="blue" size="mini"> Post Answer </Button></Link>
+
+
+              <Link to={{
+                pathname: `/postlist/${id}`,
+                state: {
+                  id: id,
+                  post: {...post}
+                }
+              }}> <Button color="blue" size="mini"> View Answers </Button> </Link>
+              </div>
             </Grid.Row>
           </Grid>
 
