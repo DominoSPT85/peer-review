@@ -45,11 +45,11 @@ class PostList extends React.Component {
        this.setState({ posts: posts.filter(p => p.id !== id) })
      })
    }
-
+   
  render() {
    return(
      <div>
-       <PostForm addPost={this.addPost} />
+       <PostForm editPost={this.editPost} addPost={this.addPost} />
        <Header as="h3" textAlign="center">All posts</Header>
        <Divider />
        <ul>

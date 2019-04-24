@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from './Post';
+import ShowPost from './ShowPost';
 import AnswerList from '../answers/AnswerList';
 import { Header } from 'semantic-ui-react';
 import axios from 'axios';
@@ -23,7 +23,7 @@ class ViewPost extends React.Component {
     const { post } = this.state
     return (
       <>
-      <Post key={post.id} {...post} post={post} />
+      <ShowPost key={post.id} {...post} post={post} editPost={this.props.location.state.editPost}/>
 
       <hr />
 

@@ -14,7 +14,7 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
           pathname: `/postlist/${id}`,
           state: {
             id: id,
-            post: {...post}
+            post: {...post},
           }
         }}>
         <Header as="h2">{title}</Header>
