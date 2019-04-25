@@ -1,7 +1,7 @@
 import React from 'react';
 import Answer from './Answer';
 import axios from "axios";
-import { Header } from 'semantic-ui-react';
+import { Header,  Grid, Divider } from 'semantic-ui-react';
 import AnswerForm from './AnswerForm'
 
 
@@ -54,7 +54,7 @@ class AnswerList extends React.Component {
   render() {
     return(
       <div>
-        <AnswerForm {...this.props} editAnswer={this.editAnswer} addAnswer={this.addAnswer} />
+        <AnswerForm addAnswer={this.addAnswer} />
         <Header as="h3" textAlign="center">All Answers</Header>
         <ul>
           {
