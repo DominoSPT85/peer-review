@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Container } from 'semantic-ui-react';
 import PostList from './posts/PostList';
+import PostForm from './posts/PostForm';
 
 
 const Home = () => (

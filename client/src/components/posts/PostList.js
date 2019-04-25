@@ -91,6 +91,8 @@ class PostList extends React.Component {
     const { search_term, } = this.state;
     return (
       <>
+      <PostForm addPost={this.addPost} />
+      <Divider />
         <Form.Input
           placeholder="Search Here..."
           value={search_term}
@@ -98,23 +100,15 @@ class PostList extends React.Component {
         >
         </Form.Input>
         <Divider hidden />
-      
-          <Grid divided="vertically">
-            <Grid.Row columns={4} textAlign="center">
-              <Grid.Column>
-                Title
-              </Grid.Column>
-              <Grid.Column>
-                Body
-              </Grid.Column>
-              
-            </Grid.Row>          
+       <Header as="h3" textAlign="center">All posts</Header>
+      <Divider />
+        <Grid>
               { (search_term.length > 0) ?
                 this.searchPost()
                 :
                 this.listPosts()
               }
-          </Grid>
+      </Grid>
       </>
     )
   }
