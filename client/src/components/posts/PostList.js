@@ -2,12 +2,12 @@ import React from 'react';
 import Post from './Post';
 import PostForm from './PostForm';
 import axios from "axios";
-import {Header, Divider, Grid, Segment } from 'semantic-ui-react';
+import {Header, Divider, Grid, Segment, Form } from 'semantic-ui-react';
 
 
 
 class PostList extends React.Component {
- state = { posts: [], editing: false }
+ state = { posts: [], editing: false, search_term: ""}
 
  componentDidMount() {
    axios.get("/api/posts")
@@ -45,41 +45,81 @@ class PostList extends React.Component {
        this.setState({ posts: posts.filter(p => p.id !== id) })
      })
    }
-   
- render() {
-   return(
-     <div>
-       <PostForm addPost={this.addPost} />
-       <Header as="h3" textAlign="center">All posts</Header>
-       <Divider />
-        <Grid padding columns='equal' >
 
+   handleChange = (e) => {
+    this.setState({ search_term: e.target.value })
+  }
 
-
-               {
-               this.state.posts.map( (d, i) => {
-               return(
-
-               <Post
-               key={i}
-               {...d}
-               posts={this.state.posts}
-               toggleEdit={this.toggleEdit}
-               editPost={this.editPost}
-               deletePost={this.deletePost}
-               />
-
-               )
-             })
-
-               }
-            
-
-       </Grid>
-     </div>
-   )
- }
-}
+  listPosts = () => {
+    const { posts } = this.state;
+    return posts.map((post, i) => {
+     return (
+      <>
+        <Post
+              key={i}
+              {...post}
+              posts={this.state.posts}
+              toggleEdit={this.toggleEdit}
+              editPost={this.editPost}
+              deletePost={this.deletePost}
+              /></>
+    )}
+  )};
+ 
+  searchPost = () => {
+    const { search_term, posts } = this.state;
+    if (search_term) {
+      let filtered_posts = posts.filter( e =>
+         e.title.includes(search_term) || e.body.includes(search_term)
+      );
+    return (
+      filtered_posts.map( (post, i) =>
+      <Post
+      key={i}
+      {...post}
+      posts={this.state.posts}
+      toggleEdit={this.toggleEdit}
+      editPost={this.editPost}
+      deletePost={this.deletePost}
+      />
+        )
+      )
+    }
+  };
+ 
+  render() {
+    const { search_term, } = this.state;
+    return (
+      <>
+        <Form.Input
+          placeholder="Search Here..."
+          value={search_term}
+          onChange={this.handleChange}
+        >
+        </Form.Input>
+        <Divider hidden />
+      
+          <Grid divided="vertically">
+            <Grid.Row columns={4} textAlign="center">
+              <Grid.Column>
+                Title
+              </Grid.Column>
+              <Grid.Column>
+                Body
+              </Grid.Column>
+              
+            </Grid.Row>          
+              { (search_term.length > 0) ?
+                this.searchPost()
+                :
+                this.listPosts()
+              }
+          </Grid>
+      </>
+    )
+  }
+ 
+};
 
 
 export default PostList;
