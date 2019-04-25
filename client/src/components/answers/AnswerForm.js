@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
-import './AnswerForm.css';
+import RTE from '../RTE';
 
 class AnswerForm extends Component {
   state = { body: ''}
@@ -31,6 +31,7 @@ class AnswerForm extends Component {
 
   render() {
     const { body } = this.state
+    const { addAnswer } = this.props
     return(
       <Form
       onSubmit={this.handleSubmit}>

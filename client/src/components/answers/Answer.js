@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Icon, Grid } from 'semantic-ui-react';
 import AnswerForm from './AnswerForm'
 
+
 const Answer = ({ id, body, post_id, editAnswer, deleteAnswer }) => {
   const [editing, toggleEdit] = useState(false)
 
@@ -12,8 +13,14 @@ const Answer = ({ id, body, post_id, editAnswer, deleteAnswer }) => {
       <Grid>
 
           <Grid.Row>
-            <Grid.Column width={15}>
-              <p>{body}</p>
+            <Grid.Column width={15} row={25}>
+              <pre style={{ 
+                borderLeft: '2px solid gray',
+                borderRight: '3px solid gray', 
+                paddingLeft: '10px', 
+                backgroundColor: 'lightgray'}}>
+                {body}
+              </pre>
             </Grid.Column>
             <Button
               icon
@@ -31,6 +38,16 @@ const Answer = ({ id, body, post_id, editAnswer, deleteAnswer }) => {
                 >
                 <Icon name="trash" />
                 </Button>
+                <Button
+              icon
+              color="blue"
+              textAlign="left"
+              size="mini"
+              
+              onClick={() => toggleEdit(!editing)}
+              >
+              <Icon name="edit" />
+            </Button>
             </Grid.Row>
 
           </Grid>

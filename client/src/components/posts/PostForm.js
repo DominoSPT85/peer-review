@@ -3,6 +3,8 @@ import { Form, Segment, Accordion } from "semantic-ui-react";
 import './PostForm.css'
 import PostList from './PostList';
 import axios from "axios";
+import PostRTE from '../PostRTE';
+import './PostForm.css';
 
 class PostForm extends React.Component {
  state = { title: '', body: '', activeIndex: -1, };
@@ -14,7 +16,7 @@ class PostForm extends React.Component {
     }
   }
 
-  handleSubmit = (e) => {
+  handlePostSubmit = (e) => {
     e.preventDefault();
     const { title, body } = this.state
     if (this.props.id) {
@@ -41,59 +43,48 @@ handleClick = (e, titleProps) => {
 
  render() {
   const { activeIndex } = this.state
+  const { addPost } = this.props
+
    return (
      <>
     <div class="ui one column stackable center aligned page grid">
       <div class="column sixteen wide">
-      <Segment padded>
-    <Accordion fluid styled>
-        <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
+        <Segment padded>
+          <Accordion fluid styled>
+              <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
+                <h3 textAlign="center">Click here to post a question</h3>
+              </Accordion.Title>
+              <Accordion.Content active={activeIndex === 0}>
+                <Form class="ui form" onSubmit={this.handlePostSubmit}>
+                    <br/>
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      label="Title"
+                      required
+                      placeholder="What is your question?"
+                      name="title"
+                      value={this.state.title}
+                      onChange={this.handleChange}
+                    />
+                    
+                    <br/>
+                    <div class="ui one column stackable center aligned page grid">
+                      <div class="column twelve wide">
+                        <Form.Button onClick="closeForm">Submit Question</Form.Button>
+                    </div>
+                  </div>
+                    
+                    </Form.Group>
+                    <PostRTE id={this.props.id} addPost={addPost} />
+                </Form>
           
-          <h3 textAlign="center">Click here to post a question</h3>
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === 0}>
-     
-     
-     <Form class="ui form" onSubmit={this.handleSubmit}>
-        <br/>
-         <div class="field">
-         <Form.Input
-           className='PostForm'
-           label="Title"
-           required
-           placeholder="What is your question?"
-           name="title"
-           value={this.state.title}
-           onChange={this.handleChange}
-         />
-         </div>
-         <div class='field'>
-         <Form.TextArea
-           className='PostForm'
-           label="Problem Summary"
-           required
-           placeholder = 'Explain what you need help with'
-           name="body"
-           value={this.state.body}
-           onChange={this.handleChange}
-         />
-         <br/>
-        </div>
-         <div class="ui one column stackable center aligned page grid">
-          <div class="column twelve wide">
-      <Form.Button onClick="closeForm">Submit Question</Form.Button>
-        </div>
+          </Accordion.Content>
+          
+          </Accordion>
+        </Segment>
       </div>
-     </Form>
-     
-     
-     </Accordion.Content>
-     
-     </Accordion>
-     </Segment>
      </div>
-     </div>
-     </>
+    </>
      
     
      
