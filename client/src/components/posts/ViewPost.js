@@ -1,5 +1,5 @@
 import React from 'react';
-import ShowPost from './ShowPost';
+import PostHeader from './PostHeader';
 import AnswerList from '../answers/AnswerList';
 import { Header, Divider } from 'semantic-ui-react';
 import axios from 'axios';
@@ -25,7 +25,7 @@ class ViewPost extends React.Component {
       <>
       <Divider hidden/>
       <Divider hidden/>
-      <ShowPost key={post.id} {...post} post={post} />
+      <PostHeader key={post.id} {...post} post={post} />
       
       <hr />
 
