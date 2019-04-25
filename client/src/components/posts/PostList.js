@@ -25,27 +25,7 @@ class PostList extends React.Component {
        this.setState({ posts: [...posts, res.data] });
      })
    }
-
-   editPost = (id, post) => {
-    axios.put(`/api/posts/${id}`, post)
-     .then( res => {
-       const posts = this.state.posts.map( p => {
-       if (p.id === id)
-         return res.data;
-       return p;
-     });
-       this.setState({ posts, });
-     })
-   }
-
-   deletePost = (id) => {
-     axios.delete(`/api/posts/${id}`)
-     .then( res => {
-       const { posts } = this.state;
-       this.setState({ posts: posts.filter(p => p.id !== id) })
-     })
-   }
-
+   
  render() {
    return(
      <div>

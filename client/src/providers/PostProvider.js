@@ -5,7 +5,7 @@ const PostContext = React.createContext();
 export const PostConsumer = PostContext.Consumer;
 
 export class PostProvider extends React.Component {
-  state = { posts: [], };
+  state = { posts: [], editPost: (id, post) => this.editPost(id, post) };
 
   getAllPosts = () => {
     axios.get("/api/posts")
@@ -28,30 +28,25 @@ export class PostProvider extends React.Component {
     })
   }
   
-  addPost = (post) => {
-    axios.post('/api/posts', { post })
-      .then( res => {
-        const {posts} = this.state
-        this.setState({ posts: [...posts, res.data ]})
-      })
-      .catch( err => {
-        console.log(err)
-      })
+  addPost = (title, body) => {
+    axios.post('/api/posts', { title, body })
+    .then( res => {
+      const { posts } = this.state;
+      this.setState({ posts: [...posts, res.data] });
+    })
   }
 
-  updatePost = (post) => {
-    axios.put(`/api/posts/${post.id}`, { post })
+  editPost = (id, post) => {
+   axios.put(`/api/posts/${id}`, post)
     .then( res => {
       const posts = this.state.posts.map( p => {
-        if (p.id === post.id)
-          return res.data
-        return p
-      })
-      this.state.setState({ posts })
+      if (p.id === id)
+        return res.data;
+      return p;
+    });
+      this.setState({ posts, });
     })
-    .catch( err => {
-      console.log(err)
-    })
+    window.location.reload()
   }
 
   deletePost = (id) => {
@@ -60,6 +55,7 @@ export class PostProvider extends React.Component {
       const { posts } = this.state;
       this.setState({ posts: posts.filter(p => p.id !== id) })
     })
+    window.location.href='/'
   }
   
   
@@ -70,7 +66,7 @@ export class PostProvider extends React.Component {
         getAllPosts: this.getAllPosts,
         getPost: this.getPost,
         addPost: this.addPost,
-        updatePost: this.updatePost,
+        editPost: this.editPost,
         deletePost: this.deletePost,
       }}>
         { this.props.children }
