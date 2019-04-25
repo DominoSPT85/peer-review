@@ -32,9 +32,7 @@ class PostList extends React.Component {
        <PostForm addPost={this.addPost} />
        <Header as="h3" textAlign="center">All posts</Header>
        <Divider />
-        <Grid padding columns='equal' >
-
-
+        <Grid centered>
 
                {
                this.state.posts.map( (d, i) => {
@@ -53,8 +51,8 @@ class PostList extends React.Component {
              })
 
                }
-            
 
+        
        </Grid>
      </div>
    )

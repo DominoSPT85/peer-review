@@ -1,0 +1,10 @@
+
+div.required.field.AnswerForm textarea {
+  background-color: #e5e7ea;
+  border: none;
+}
+
+div.required.field.AnswerForm textarea :focus {
+  background-color: #e5e7ea;
+  border: none;
+}
