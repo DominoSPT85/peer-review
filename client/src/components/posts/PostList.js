@@ -2,7 +2,7 @@ import React from 'react';
 import Post from './Post';
 import PostForm from './PostForm';
 import axios from "axios";
-import {Header, Divider, Grid, Segment, Form } from 'semantic-ui-react';
+import {Header, Divider, Grid, Segment, Input} from 'semantic-ui-react';
 
 
 
@@ -93,12 +93,12 @@ class PostList extends React.Component {
       <>
       <PostForm addPost={this.addPost} />
       <Divider />
-        <Form.Input
-          placeholder="Search Here..."
+        <Input
+          focus placeholder="Search Through Posts"
           value={search_term}
           onChange={this.handleChange}
         >
-        </Form.Input>
+        </Input>
         <Divider hidden />
        <Header as="h3" textAlign="center">All posts</Header>
       <Divider />
