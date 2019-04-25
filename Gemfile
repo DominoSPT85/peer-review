@@ -10,6 +10,8 @@ gem 'activeadmin'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise_token_auth', "~> 1.0.0"
 gem 'angular_rails_csrf'
+gem 'arctic_admin'
+gem 'sass-rails'
 
 
 group :development, :test do
