@@ -11,49 +11,39 @@ class RTE extends React.Component {
     super(props);
     this.onChange = this.onChange.bind(this);
   }
-  state = {body:""};
+  state = { title: '', body: '' };
     
 
-  handleSubmit = (e) => {
+  handlePostSubmit = (e) => {
     e.preventDefault();
-    const { body }  = this.state
-    this.props.addAnswer(body);
-    this.setState({ body: '' })
-   }
+    const { title, body } = this.state
+    if (this.props.id) {
+      this.props.editPost(this.props.id, {...this.state});
+      this.props.toggleEdit(!this.props.editing)
+    }
+    else {
+      this.props.addPost(title, body);
+    }
+    this.setState({ title: "", body: "", });
+  }
 
    
 
-   componentDidMount() {
-    const id = this.props.id
-    axios.get(`/api/posts/${id}/answers`)
-      .then( res => {
-        this.setState({ answers: res.data, });
-      })
-      .catch( err => {
-        console.log(err);
-      })
+  componentDidMount() {
+    if (this.props.id) {
+      const { title, body } = this.props
+      this.setState({ title, body })
+    }
   }
 
-  // handleChange = (newV) => {
-  //   console.log('', newV)
-  //   // this.setState({ body: { newV } });
-  // };  
+ 
 
   onChange(newValue) {
     this.state.body = newValue;
 
 }
   
-  // addAnswer = (body) => {
-  //   const id = this.props.id
-  //   axios.post(`/api/posts/${id}/answers`, { body })
-  //   .then( res => {
-  //     const { answers } = this.state;
-  //     this.setState({ answers: [...answers, res.data] });    })
-  //   .catch( err => {
-  //     console.log(err);
-  //   })
-  // }
+
 
   render() {
     const { body } = this.state
@@ -83,7 +73,7 @@ class RTE extends React.Component {
   
     
     
-    <button type='submit' onClick={this.handleSubmit}>Submit</button>
+    <button type='submit' onClick={this.handlePostSubmit}>Submit</button>
     </Fragment>
 
     )

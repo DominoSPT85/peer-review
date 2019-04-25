@@ -33,7 +33,9 @@ class AnswerForm extends Component {
     const { body } = this.state
     const { addAnswer } = this.props
     return(
+  
       <RTE id={this.props.id} addAnswer={addAnswer} />
+      
   
     
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Header, Button, Icon, Card, Grid, Divider } from 'semantic-ui-react';
+import {Header, Button, Icon, Card, Grid, Divider, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PostForm from './PostForm';
 
@@ -13,7 +13,7 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
     <div>
       <Grid  divided>
       <Grid.Column>
-            <Card>
+            <Card style={ {width: '100%', color: 'black' } }>
               <div className="center">
               <Link to={{
                 pathname: `/postlist/${id}`,
@@ -22,7 +22,7 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
                   post: {...post}
                 }
               }}>
-              <Card.Header>{title}</Card.Header>
+              <Card.Header textAlign="center">{title}</Card.Header>
               <Button
               icon
               inverted color="blue"
@@ -47,12 +47,12 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
 
         </Link>
         <Card.Content>
-          <Card.Description>{body}</Card.Description>
+          <Card.Description height='auto'><pre>{body}</pre></Card.Description>
 
           <Divider/>
           <Grid>
             <Grid.Row>
-              <Button> Upload </Button>
+              <Button color="blue" style={{padding: ''}}> Upload </Button>
               <Button color="blue"> Post Answer </Button>
               <Button color="blue"> View Answers </Button>
             </Grid.Row>

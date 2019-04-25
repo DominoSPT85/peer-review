@@ -54,13 +54,13 @@ class AnswerList extends React.Component {
   render() {
     return(
       <div>
-        <AnswerForm addAnswer={this.addAnswer} />
+        
         <Header as="h3" textAlign="center">All Answers</Header>
         <ul>
           {
         this.state.answers.map( (a, i) => {
           return(
-          <Answer
+          <Answer 
           key={i}
           {...a}
           answers={this.state.answers}
@@ -68,11 +68,15 @@ class AnswerList extends React.Component {
           toggleEdit={this.toggleEdit}
           deleteAnswer={this.deleteAnswer}
           />
+          
+          
+          
           )
         })
 
           }
         </ul>
+        <AnswerForm addAnswer={this.addAnswer} />
       </div>
     )
   }
