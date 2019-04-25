@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Grid, Divider, } from "semantic-ui-react";
-import './PostForm.css'
+import PostRTE from '../PostRTE';
+import './PostForm.css';
 
 class PostForm extends React.Component {
  state = { title: '', body: '' };
@@ -12,7 +13,7 @@ class PostForm extends React.Component {
     }
   }
 
-  handleSubmit = (e) => {
+  handlePostSubmit = (e) => {
     e.preventDefault();
     const { title, body } = this.state
     if (this.props.id) {
@@ -30,11 +31,12 @@ class PostForm extends React.Component {
  };
 
  render() {
+  const { addPost } = this.props
    return (
-     <Form class="ui form" onSubmit={this.handleSubmit}>
-         <div class="field">
+    
+     <Form onSubmit={this.handlePostSubmit}>
+       <Form.Group widths="equal">
          <Form.Input
-           className='PostForm'
            label="Title"
            required
            placeholder="Title"
@@ -42,19 +44,9 @@ class PostForm extends React.Component {
            value={this.state.title}
            onChange={this.handleChange}
          />
-         </div>
-         <div class='field'>
-         <Form.TextArea
-           className='PostForm'
-           label="Question"
-           required
-           placeholder="Question"
-           name="body"
-           value={this.state.body}
-           onChange={this.handleChange}
-         />
-         </div>
-      <Form.Button>Submit</Form.Button>
+        
+        </Form.Group>
+        <PostRTE id={this.props.id} addPost={addPost} />
      </Form>
    )
  }
