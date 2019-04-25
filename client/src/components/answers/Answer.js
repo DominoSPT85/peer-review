@@ -7,8 +7,8 @@ const Answer = ({ id, body, post_id, editAnswer, deleteAnswer }) => {
 
   return(
     <div >
-      <div >
-        <div textAlign="center">
+    
+        <div class="content">
           <p>{body}</p>
           <Button
             icon
@@ -31,7 +31,7 @@ const Answer = ({ id, body, post_id, editAnswer, deleteAnswer }) => {
         </div>
         { editing ? <AnswerForm id={id} body={body} editAnswer={editAnswer} deleteAnswer={deleteAnswer} post_id={post_id} toggleEdit={toggleEdit} editing={editing} /> : null }
       </div>
-    </div>
+    
   )
 }
 

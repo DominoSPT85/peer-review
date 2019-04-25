@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
+import './AnswerForm.css';
 
 class AnswerForm extends Component {
   state = { body: ''}
@@ -35,6 +36,7 @@ class AnswerForm extends Component {
       onSubmit={this.handleSubmit}>
 
       <Form.TextArea
+          className='AnswerForm'
            label="Answer"
            required
            placeholder="Type your answer here"
