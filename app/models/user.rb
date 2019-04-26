@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :answers
+
+  def display_name
+    email
+  end
 end

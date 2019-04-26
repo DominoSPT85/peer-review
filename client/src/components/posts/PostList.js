@@ -3,6 +3,11 @@ import Post from './Post';
 import PostForm from './PostForm';
 import axios from "axios";
 import {Header, Divider, Grid, Input } from 'semantic-ui-react';
+<<<<<<< HEAD
+import TruncateString from 'react-truncate-string';
+=======
+>>>>>>> d7ea5886e8c041950b81f66c7b53f437d5caebc1
+
 
 
 
@@ -29,6 +34,10 @@ class PostList extends React.Component {
    handleChange = (e) => {
     this.setState({ search_term: e.target.value })
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d7ea5886e8c041950b81f66c7b53f437d5caebc1
 
   listPosts = () => {
     const { posts } = this.state;
@@ -45,7 +54,7 @@ class PostList extends React.Component {
               /></>
     )}
   )};
- 
+
   searchPost = () => {
     const { search_term, posts } = this.state;
     if (search_term) {
@@ -66,7 +75,7 @@ class PostList extends React.Component {
         )
       }
     };
-   
+
     render() {
       const { search_term, } = this.state;
       return (
@@ -80,7 +89,7 @@ class PostList extends React.Component {
             flex
             textAlignment={'center'}
             style={{ width:"550px", height:'40px', }}
-            //lots of tabs on focus placeholder, text to the right 
+            //lots of tabs on focus placeholder, text to the right
             focus placeholder="                                                                                      Search"
             value={search_term}
             onChange={this.handleChange}
@@ -101,9 +110,9 @@ class PostList extends React.Component {
         </>
       )
     }
-   
+
   };
-  
-  
-  
+
+
+
 export default PostList;
