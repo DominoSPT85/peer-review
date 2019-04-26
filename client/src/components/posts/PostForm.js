@@ -85,10 +85,6 @@ handleClick = (e, titleProps) => {
       </div>
      </div>
     </>
-     
-    
-     
-     
    )
  }
 }

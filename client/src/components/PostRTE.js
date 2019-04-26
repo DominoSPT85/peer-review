@@ -5,6 +5,7 @@ import AceEditor from "react-ace";
 import "brace/mode/java";
 import "brace/theme/github";
 import axios from 'axios';
+import { Form, Grid, Divider, } from "semantic-ui-react";
 
 class RTE extends React.Component {
   constructor(props) {
@@ -42,6 +43,9 @@ class RTE extends React.Component {
     this.state.body = newValue;
 
 }
+handleChange = (e) => {
+  this.setState({ [e.target.name]: e.target.value, });
+};
   
 
 
@@ -50,7 +54,17 @@ class RTE extends React.Component {
   
     return(
       <Fragment>
+       <Form.Group widths="equal">
+         <Form.Input
+           label="Title"
+           required
+           placeholder="Title"
+           name="title"
+           value={this.state.title}
+           onChange={this.handleChange}
+         />
         
+        </Form.Group>
       <AceEditor
        placeholder=""
        mode="javascript"
