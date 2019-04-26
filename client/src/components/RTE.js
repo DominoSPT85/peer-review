@@ -61,21 +61,23 @@ class RTE extends React.Component {
     return(
       <Fragment>
       <AceEditor
-       placeholder=""
-       mode="javascript"
-       theme="monokai"
+       style={{border: "1px solid black", width: '100%', color: 'black' }}
+       value="// Enter text here."
+       mode=""
        onLoad={this.onLoad}
        onChange={this.onChange}
        fontSize={14}
-       showPrintMargin={true}
+       showPrintMargin={false}
        showGutter={true}
        highlightActiveLine={true}
        setOptions={{
-       enableBasicAutocompletion: true,
        enableLiveAutocompletion: false,
-       enableSnippets: true,
        showLineNumbers: true,
        tabSize: 2,
+       wrapEnabled: true,
+       required: true,
+       minLines: 15,
+       maxLines: 20,
        
        }}/>
       

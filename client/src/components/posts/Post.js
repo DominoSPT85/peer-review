@@ -3,8 +3,6 @@ import {Button, Card, Grid, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PostForm from './PostForm';
 import  './Post.css';
-import Truncate from 'react-truncate';
-
 
 const Post = ({ id, title, body, editPost, deletePost, post }) => {
   const [editing, toggleEdit] = useState(false)
@@ -20,9 +18,7 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
         <Divider/>
         <Card.Content>
           <Card.Description>
-            <Truncate lines={8} ellipsis={<span>...</span>}>
             {body}
-            </Truncate>
           </Card.Description>
 
 

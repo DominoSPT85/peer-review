@@ -2,8 +2,6 @@ import React, {Fragment} from "react";
 import { render } from "react-dom";
 import brace from "brace";
 import AceEditor from "react-ace";
-import "brace/mode/java";
-import "brace/theme/github";
 import axios from 'axios';
 import { Form, Grid, Divider, } from "semantic-ui-react";
 
@@ -28,6 +26,7 @@ class RTE extends React.Component {
     this.setState({ title: "", body: "", });
   }
 
+  
    
 
   componentDidMount() {
@@ -66,21 +65,24 @@ handleChange = (e) => {
         
         </Form.Group>
       <AceEditor
-       placeholder=""
-       mode="javascript"
-       theme="monokai"
+      style={{border: "1px solid black", width: '100%', color: 'black' }}
+       value="// Enter text here."
+       mode=""
        onLoad={this.onLoad}
        onChange={this.onChange}
        fontSize={14}
-       showPrintMargin={true}
+       showPrintMargin={false}
        showGutter={true}
        highlightActiveLine={true}
        setOptions={{
-       enableBasicAutocompletion: true,
        enableLiveAutocompletion: false,
-       enableSnippets: true,
        showLineNumbers: true,
        tabSize: 2,
+       wrapEnabled: true,
+       required: true,
+       minLines: 10,
+       maxLines: 30,
+       
        
        }}/>
       
