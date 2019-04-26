@@ -1,11 +1,9 @@
 import React from "react";
 import { Form, Segment, Accordion } from "semantic-ui-react";
-import './PostForm.css'
-import PostList from './PostList';
-import axios from "axios";
+import './PostForm.css';
 
 class PostForm extends React.Component {
- state = { title: '', body: '', activeIndex: -1, };
+ state = { title: '', body: '', };
 
  componentDidMount() {
     if (this.props.id) {
@@ -24,36 +22,18 @@ class PostForm extends React.Component {
     else {
       this.props.addPost(title, body);
     }
-    this.setState({ title: "", body: "", activeIndex: -1 });
+    this.setState({ title: "", body: ""});
   }
 
  handleChange = (e) => {
    this.setState({ [e.target.name]: e.target.value, });
  };
 
-handleClick = (e, titleProps) => {
- const { index } = titleProps
- const { activeIndex } = this.state
- const newIndex = activeIndex === index ? -1 : index
-
- this.setState({ activeIndex: newIndex })
-};
-
  render() {
-  const { activeIndex } = this.state
    return (
      <>
     <div class="ui one column stackable center aligned page grid">
       <div class="column sixteen wide">
-      <Segment padded>
-    <Accordion fluid styled>
-        <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
-          
-          <h3 textAlign="center">Click here to post a question</h3>
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === 0}>
-     
-     
      <Form class="ui form" onSubmit={this.handleSubmit}>
         <br/>
          <div class="field">
@@ -85,12 +65,6 @@ handleClick = (e, titleProps) => {
         </div>
       </div>
      </Form>
-     
-     
-     </Accordion.Content>
-     
-     </Accordion>
-     </Segment>
      </div>
      </div>
      </>
