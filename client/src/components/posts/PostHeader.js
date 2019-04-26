@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Button, Icon, Divider, Segment } from 'semantic-ui-react';
+import {Header, Button, Icon, Segment } from 'semantic-ui-react';
 import PostForm from './PostForm';
 import { PostConsumer } from '../../providers/PostProvider';
 

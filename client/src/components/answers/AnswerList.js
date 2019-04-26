@@ -1,7 +1,7 @@
 import React from 'react';
 import Answer from './Answer';
 import axios from "axios";
-import { Header,  Grid, Divider } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 import AnswerForm from './AnswerForm'
 
 

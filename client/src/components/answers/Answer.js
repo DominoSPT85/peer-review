@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Icon, Grid, Divider, Segment } from 'semantic-ui-react';
+import {Button, Icon, Grid } from 'semantic-ui-react';
 import AnswerForm from './AnswerForm'
 
 const Answer = ({ id, body, post_id, editAnswer, deleteAnswer }) => {
