@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Grid, Divider, } from "semantic-ui-react";
+import { Form, Segment, Accordion } from "semantic-ui-react";
 import './PostForm.css'
 import PostList from './PostList';
 import axios from "axios";
@@ -31,15 +31,37 @@ class PostForm extends React.Component {
    this.setState({ [e.target.name]: e.target.value, });
  };
 
+handleClick = (e, titleProps) => {
+ const { index } = titleProps
+ const { activeIndex } = this.state
+ const newIndex = activeIndex === index ? -1 : index
+
+ this.setState({ activeIndex: newIndex })
+};
+
  render() {
+  const { activeIndex } = this.state
    return (
+     <>
+    <div class="ui one column stackable center aligned page grid">
+      <div class="column sixteen wide">
+      <Segment padded>
+    <Accordion fluid styled>
+        <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
+          
+          <h3 textAlign="center">Click here to post a question</h3>
+        </Accordion.Title>
+        <Accordion.Content active={activeIndex === 0}>
+     
+     
      <Form class="ui form" onSubmit={this.handleSubmit}>
+        <br/>
          <div class="field">
          <Form.Input
            className='PostForm'
            label="Title"
            required
-           placeholder="Title"
+           placeholder="What is your question?"
            name="title"
            value={this.state.title}
            onChange={this.handleChange}
@@ -48,16 +70,34 @@ class PostForm extends React.Component {
          <div class='field'>
          <Form.TextArea
            className='PostForm'
-           label="Question"
+           label="Problem Summary"
            required
-           placeholder="Question"
+           placeholder = 'Explain what you need help with'
            name="body"
            value={this.state.body}
            onChange={this.handleChange}
          />
-         </div>
-      <Form.Button>Submit</Form.Button>
+         <br/>
+        </div>
+         <div class="ui one column stackable center aligned page grid">
+          <div class="column twelve wide">
+      <Form.Button>Submit Question</Form.Button>
+        </div>
+      </div>
      </Form>
+     
+     
+     </Accordion.Content>
+     
+     </Accordion>
+     </Segment>
+     </div>
+     </div>
+     </>
+     
+    
+     
+     
    )
  }
 }

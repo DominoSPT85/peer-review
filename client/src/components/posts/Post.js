@@ -13,36 +13,9 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
       <Grid.Column>
             <Card>
               <div class='ui center aligned top segment'>
-              <Link to={{
-                pathname: `/postlist/${id}`,
-                state: {
-                  id: id,
-                  post: {...post}
-                }
-              }}>
               <Card.Header>{title}</Card.Header>
-              <Button
-                icon
-                inverted color="blue"
-                floated="right"
-                size="mini"
-                onClick={() => toggleEdit(!editing)}
-                >
-                <Icon name="edit" />
-              </Button>
-              <Button
-                icon
-                inverted color="red"
-                floated="right"
-                size="mini"
-                onClick={() => deletePost(id)}
-                >
-                <Icon name="trash" />
-            </Button>
         <Divider hidden/>
         <Divider/>
-
-        </Link>
         <Card.Content>
           <Card.Description>{body}</Card.Description>
 
