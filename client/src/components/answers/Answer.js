@@ -1,20 +1,16 @@
 import React, {useState} from 'react';
-import {Button, Icon, Grid } from 'semantic-ui-react';
+import {Button, Icon, Grid, Segment } from 'semantic-ui-react';
 import AnswerForm from './AnswerForm'
 
 const Answer = ({ id, body, post_id, editAnswer, deleteAnswer }) => {
   const [editing, toggleEdit] = useState(false)
 
   return(
-    <div >
 
-      <div>
-      <Grid>
-
-          <Grid.Row>
-            <Grid.Column width={15}>
-              <p>{body}</p>
-            </Grid.Column>
+    <div class="ui one column stackable center aligned page grid">
+      <div class="column sixteen wide">
+      <Segment padded>
+            <p>{body}</p>
             <Button
               icon
               inverted color="blue"
@@ -31,9 +27,7 @@ const Answer = ({ id, body, post_id, editAnswer, deleteAnswer }) => {
                 >
                 <Icon name="trash" />
                 </Button>
-            </Grid.Row>
-
-          </Grid>
+      </Segment>
         { editing ? <AnswerForm id={id} body={body} editAnswer={editAnswer} deleteAnswer={deleteAnswer} post_id={post_id} toggleEdit={toggleEdit} editing={editing} /> : null }
       </div>
 
