@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Button, Icon, Divider } from 'semantic-ui-react';
+import {Header, Button, Icon, Divider, Segment } from 'semantic-ui-react';
 import PostForm from './PostForm';
 import { PostConsumer } from '../../providers/PostProvider';
 
@@ -12,9 +12,8 @@ class PostHeader extends React.Component {
     const { id, title, body } = this.props 
     return (
       <div>
-        <Header>{title}</Header>
-        <br />
-        <p>{body}</p>
+        <Segment padded>
+        <Header as="h3">{title}</Header>
         <Button
           icon
           inverted color="blue"
@@ -24,6 +23,8 @@ class PostHeader extends React.Component {
         >
           <Icon name="edit" />
         </Button>
+        <br />
+        <br />
         <Button
           icon
           inverted color="red"
@@ -33,7 +34,10 @@ class PostHeader extends React.Component {
         >
           <Icon name="trash" />
         </Button>
+        <br />
+        <p>{body}</p>
         { this.state.editing ? <PostForm id={id} title={title} body={body} editPost={this.props.editPost} deletePost={this.props.deletePost} toggleEdit={this.toggleEdit} editing={this.state.editing} /> : null }
+        </Segment>
       </div>
     )
   }

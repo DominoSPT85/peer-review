@@ -56,6 +56,7 @@ class AnswerList extends React.Component {
       <div>
         <AnswerForm addAnswer={this.addAnswer} />
         <Header as="h3" textAlign="center">All Answers</Header>
+        <br />
         <ul>
           {
         this.state.answers.map( (a, i) => {

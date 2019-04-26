@@ -5,6 +5,7 @@ import PostForm from './PostForm';
 import  './Post.css';
 
 const Post = ({ id, title, body, editPost, deletePost, post }) => {
+  const [editing, toggleEdit] = useState(false)
 
   return (
     <div>
@@ -12,18 +13,9 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
       <Grid.Column>
             <Card>
               <div class='ui center aligned top segment'>
-              <Link to={{
-                pathname: `/postlist/${id}`,
-                state: {
-                  id: id,
-                  post: {...post}
-                }
-              }}>
               <Card.Header>{title}</Card.Header>
         <Divider hidden/>
         <Divider/>
-
-        </Link>
         <Card.Content>
           <Card.Description>{body}</Card.Description>
 
@@ -31,15 +23,6 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
 
           <Grid padded>
             <Grid.Row>
-              < div class="ui bottom segment">
-              <a href='/upload'><Button size="mini"> Upload </Button></a>
-              <Link to={{
-                pathname: `/postlist/${id}`,
-                state: {
-                  id: id,
-                  post: {...post}
-                }
-              }}> <Button color="blue" size="mini"> Post Answer </Button></Link>
 
               <div className="buttons">
 
@@ -68,6 +51,7 @@ const Post = ({ id, title, body, editPost, deletePost, post }) => {
 
           </Card.Content>
         </div>
+        { editing ? <PostForm id={id} title={title} body={body} editPost={editPost} deletePost={deletePost} post={post} toggleEdit={toggleEdit} editing={editing} /> : null }
         </Card>
         <Divider hidden />
         </Grid.Column>

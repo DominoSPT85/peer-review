@@ -15,28 +15,22 @@ const Answer = ({ id, body, post_id, editAnswer, deleteAnswer }) => {
             <Grid.Column width={15}>
               <p>{body}</p>
             </Grid.Column>
-            <Grid.Column>
             <Button
               icon
-              color="blue"
-              textAlign="left"
+              inverted color="blue"
               size="mini"
               onClick={() => toggleEdit(!editing)}
               >
               <Icon name="edit" />
             </Button>
-            </Grid.Column>
-            <Grid.Column>
               <Button
                 icon
                 inverted color="red"
-                floated="right"
                 size="mini"
                 onClick={() => deleteAnswer(id, post_id)}
                 >
                 <Icon name="trash" />
                 </Button>
-            </Grid.Column>
             </Grid.Row>
 
           </Grid>
