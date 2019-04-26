@@ -37,9 +37,7 @@ class AnswerForm extends Component {
 
       <Form.TextArea
           className='AnswerForm'
-           label="Answer"
            required
-           placeholder="Type your answer here"
            name="body"
            value={body}
            onChange={this.handleChange}
