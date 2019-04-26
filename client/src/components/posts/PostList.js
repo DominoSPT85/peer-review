@@ -2,16 +2,15 @@ import React from 'react';
 import Post from './Post';
 import PostForm from './PostForm';
 import axios from "axios";
-import {Header, Divider, Grid, Input } from 'semantic-ui-react';
+import {Header, Divider, Grid, Input, Accordion } from 'semantic-ui-react';
 import TruncateString from 'react-truncate-string';
 
 
 
 
-
 class PostList extends React.Component {
- state = { posts: [], editing: false, search_term: ""}
-// fix
+ state = { posts: [], editing: false, search_term: "", activeIndex: -1 }
+// github breaking
  componentDidMount() {
    axios.get("/api/posts")
      .then( res => {
@@ -70,12 +69,33 @@ class PostList extends React.Component {
       }
     };
 
+    handleClick = (e, titleProps) => {
+      const { index } = titleProps
+      const { activeIndex } = this.state
+      const newIndex = activeIndex === index ? -1 : index
+     
+      this.setState({ activeIndex: newIndex })
+     };
+
+     toggleState = () => {
+       this.setState({ activeIndex: -1 })
+     }
+
     render() {
       const { search_term, } = this.state;
+      const { activeIndex } = this.state;
       return (
         <>
-        <PostForm addPost={this.addPost} />
         <div class="ui one column stackable center aligned page grid">
+        <Accordion fluid styled>
+          <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
+            
+            <Header as="h3" textAlign="center">Click here to post a question</Header>
+          </Accordion.Title>
+          <Accordion.Content active={activeIndex === 0}>
+            <PostForm addPost={this.addPost} toggleState={this.toggleState} />
+          </Accordion.Content>
+        </Accordion>
         <div class="column twelve wide">
         <br/>
         <Header as="h2" textAlign="center">All Questions</Header>
