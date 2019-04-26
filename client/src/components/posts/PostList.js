@@ -3,10 +3,7 @@ import Post from './Post';
 import PostForm from './PostForm';
 import axios from "axios";
 import {Header, Divider, Grid, Input } from 'semantic-ui-react';
-<<<<<<< HEAD
-import TruncateString from 'react-truncate-string';
-=======
->>>>>>> d7ea5886e8c041950b81f66c7b53f437d5caebc1
+
 
 
 
@@ -34,10 +31,7 @@ class PostList extends React.Component {
    handleChange = (e) => {
     this.setState({ search_term: e.target.value })
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> d7ea5886e8c041950b81f66c7b53f437d5caebc1
 
   listPosts = () => {
     const { posts } = this.state;
