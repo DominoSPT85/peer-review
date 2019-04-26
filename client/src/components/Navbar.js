@@ -53,6 +53,8 @@ class Navbar extends React.Component {
           </Link>
 
             { this.rightNavItems() }
+
+
         </Menu>
       </div>
     )

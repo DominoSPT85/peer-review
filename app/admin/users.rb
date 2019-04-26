@@ -12,4 +12,5 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
+
 end
