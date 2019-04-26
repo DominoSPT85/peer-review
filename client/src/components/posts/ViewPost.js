@@ -32,7 +32,6 @@ class ViewPost extends React.Component {
 
       <Header>Post an answer:</Header>
       <AnswerList id={parseInt(this.props.match.params.id)} />
-      <hr />
       </>
     )
   }
