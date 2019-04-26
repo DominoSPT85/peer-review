@@ -10,7 +10,7 @@ import TruncateString from 'react-truncate-string';
 
 class PostList extends React.Component {
  state = { posts: [], editing: false, search_term: "", activeIndex: -1 }
-// fix
+// github breaking
  componentDidMount() {
    axios.get("/api/posts")
      .then( res => {
