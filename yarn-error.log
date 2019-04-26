@@ -1,0 +1,57 @@
+Arguments: 
+  /usr/local/Cellar/node/11.13.0/bin/node /usr/local/bin/yarn heroku-postbuild
+
+PATH: 
+  /Users/lcella/.rbenv/shims:/Users/lcella/.rbenv/bin:/Users/lcella/.rbenv/shims:/Users/lcella/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/lcella/.rbenv/bin
+
+Yarn version: 
+  1.13.0
+
+Node version: 
+  11.13.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/lcella/Desktop/peer-review/peer-review/package.json: Unexpected token } in JSON at position 472
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:304:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "peer-review",
+    "version": "1.0.0",
+    "description": "Our portfolio project!",
+    "main": "index.js",
+    "directories": {
+      "lib": "lib",
+      "test": "test"
+    },
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
+      "deploy": "cp -a client/build/. public/",
+      "heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'",
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/DominoSPT85/peer-review.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/DominoSPT85/peer-review/issues"
+    },
+    "homepage": "https://github.com/DominoSPT85/peer-review#readme"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
