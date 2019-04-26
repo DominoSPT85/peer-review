@@ -8,7 +8,7 @@ import {Header, Divider, Grid, Input } from 'semantic-ui-react';
 
 class PostList extends React.Component {
  state = { posts: [], editing: false, search_term: ""}
-
+// fix
  componentDidMount() {
    axios.get("/api/posts")
      .then( res => {
