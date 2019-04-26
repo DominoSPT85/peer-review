@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root :to => 'index#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   mount_devise_token_auth_for 'User', at: 'api/auth'
@@ -9,5 +8,7 @@ Rails.application.routes.draw do
       resources :answers
     end
   end
+
+ get '*other', to: 'static#index'
 
 end
