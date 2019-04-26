@@ -26,11 +26,11 @@ class ViewPost extends React.Component {
       <Divider hidden/>
       <Divider hidden/>
       <PostHeader key={post.id} {...post} post={post} />
-      
+      <br />
+      <br />
       <hr />
 
-      <Header as='h3'>Answers</Header>
-      <p>Post an answer:</p>
+      <Header>Post an answer:</Header>
       <AnswerList id={parseInt(this.props.match.params.id)} />
       <hr />
       </>
