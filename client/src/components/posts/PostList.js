@@ -2,7 +2,7 @@ import React from 'react';
 import Post from './Post';
 import PostForm from './PostForm';
 import axios from "axios";
-import {Header, Divider, Grid, Segment } from 'semantic-ui-react';
+import {Header, Form, Divider, Grid, Segment, Button, Accordion } from 'semantic-ui-react';
 
 
 
@@ -46,11 +46,14 @@ class PostList extends React.Component {
      })
    }
 
+
  render() {
    return(
      <div>
-       <PostForm addPost={this.addPost} />
-       <Header as="h3" textAlign="center">All posts</Header>
+      <Accordion>
+      <PostForm addPost={this.addPost} />
+      </Accordion>
+       <Header as="h3" textAlign="center">Current Posts</Header>
        <Divider />
         <Grid centered>
 
@@ -72,7 +75,7 @@ class PostList extends React.Component {
 
                }
 
-        
+
        </Grid>
      </div>
    )
