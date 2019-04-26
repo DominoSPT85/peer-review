@@ -5,7 +5,7 @@ import PostList from './PostList';
 import axios from "axios";
 
 class PostForm extends React.Component {
- state = { title: '', body: '' };
+ state = { title: '', body: '', activeIndex: -1, };
 
  componentDidMount() {
     if (this.props.id) {
@@ -24,7 +24,7 @@ class PostForm extends React.Component {
     else {
       this.props.addPost(title, body);
     }
-    this.setState({ title: "", body: "", });
+    this.setState({ title: "", body: "", activeIndex: -1 });
   }
 
  handleChange = (e) => {
@@ -81,7 +81,7 @@ handleClick = (e, titleProps) => {
         </div>
          <div class="ui one column stackable center aligned page grid">
           <div class="column twelve wide">
-      <Form.Button>Submit Question</Form.Button>
+      <Form.Button onClick="closeForm">Submit Question</Form.Button>
         </div>
       </div>
      </Form>

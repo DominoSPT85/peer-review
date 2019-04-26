@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Header, Button, Icon, Card, Grid, Divider, Segment } from 'semantic-ui-react';
+import {Button, Card, Grid, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PostForm from './PostForm';
 import  './Post.css';
