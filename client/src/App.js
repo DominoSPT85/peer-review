@@ -11,6 +11,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import PostList from './components/posts/PostList';
 import ViewPost from './components/posts/ViewPost';
 import Upload from './components/Upload/Upload';
+import PostForm from './components/posts/PostForm';
 
 
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/postlist" component={PostList} />
+          <Route exact path="/postform" component={PostForm} />
           <ProtectedRoute exact path='/postlist/:id' component={ViewPost} />
           <ProtectedRoute exact path='/upload' component={Upload} />
           <Route component={NoMatch} />

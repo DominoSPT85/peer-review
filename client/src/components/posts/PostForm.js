@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, Segment, Accordion } from "semantic-ui-react";
 import './PostForm.css'
+import PostList from './PostList';
+import axios from "axios";
 
 class PostForm extends React.Component {
  state = { title: '', body: '' };
