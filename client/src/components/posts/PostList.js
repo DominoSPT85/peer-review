@@ -5,12 +5,8 @@ import axios from "axios";
 import {Header, Divider, Grid, Input, Accordion } from 'semantic-ui-react';
 import TruncateString from 'react-truncate-string';
 
-
-
-
 class PostList extends React.Component {
  state = { posts: [], editing: false, search_term: "", activeIndex: -1, }
-// fix
  componentDidMount() {
    axios.get("/api/posts")
      .then( res => {
