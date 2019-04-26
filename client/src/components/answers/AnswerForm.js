@@ -33,20 +33,7 @@ class AnswerForm extends Component {
     const { body } = this.state
     const { addAnswer } = this.props
     return(
-      <Form
-      onSubmit={this.handleSubmit}>
-
-      <Form.TextArea
-          className='AnswerForm'
-           required
-           name="body"
-           value={body}
-           onChange={this.handleChange}
-         />
-         <Form.Button>
-          Submit
-         </Form.Button>
-      </Form>
+      <RTE id={this.props.id} addAnswer={addAnswer} />
     )
   }
 

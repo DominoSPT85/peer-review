@@ -5,6 +5,7 @@ import AceEditor from "react-ace";
 import "brace/mode/java";
 import "brace/theme/github";
 import axios from 'axios';
+import { Form, Segment, Accordion } from "semantic-ui-react";
 
 class RTE extends React.Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class RTE extends React.Component {
     return(
       <Fragment>
       <AceEditor
-       style={{border: "1px solid black", width: '100%', color: 'black' }}
+       style={{width: '100%', border: '1px solid black'}}
        value="// Enter text here."
        mode=""
        onLoad={this.onLoad}
@@ -85,7 +86,7 @@ class RTE extends React.Component {
   
     
     
-    <button type='submit' onClick={this.handleSubmit}>Submit</button>
+      <Form.Button onClick={this.handleSubmit}>Submit Answer</Form.Button>
     </Fragment>
 
     )

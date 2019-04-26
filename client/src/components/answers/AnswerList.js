@@ -1,7 +1,7 @@
 import React from 'react';
 import Answer from './Answer';
 import axios from "axios";
-import { Header } from 'semantic-ui-react';
+import { Header, Divider } from 'semantic-ui-react';
 import AnswerForm from './AnswerForm'
 
 
@@ -54,14 +54,14 @@ class AnswerList extends React.Component {
   render() {
     return(
       <div>
-        
-        <Header as="h3" textAlign="center">All Answers</Header>
+        <AnswerForm addAnswer={this.addAnswer} />
         <br />
-        <ul>
+        <Divider horizontal><Header as="h2">All Answers</Header></Divider>
+        <br />
           {
         this.state.answers.map( (a, i) => {
           return(
-          <Answer 
+          <Answer
           key={i}
           {...a}
           answers={this.state.answers}
@@ -69,15 +69,9 @@ class AnswerList extends React.Component {
           toggleEdit={this.toggleEdit}
           deleteAnswer={this.deleteAnswer}
           />
-          
-          
-          
           )
         })
-
           }
-        </ul>
-        <AnswerForm addAnswer={this.addAnswer} />
       </div>
     )
   }

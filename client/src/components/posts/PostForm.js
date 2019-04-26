@@ -58,19 +58,12 @@ handleClick = (e, titleProps) => {
                 <Form class="ui form" onSubmit={this.handlePostSubmit}>
                     <br/>
                   <Form.Group widths="equal">
-                    <Form.Input
-                      label="Title"
-                      required
-                      placeholder="What is your question?"
-                      name="title"
-                      value={this.state.title}
-                      onChange={this.handleChange}
-                    />
+                  
                     
                     <br/>
                     <div class="ui one column stackable center aligned page grid">
                       <div class="column twelve wide">
-                        <Form.Button onClick="closeForm">Submit Question</Form.Button>
+                        
                     </div>
                   </div>
                     

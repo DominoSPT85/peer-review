@@ -89,8 +89,7 @@ handleChange = (e) => {
  
   
     
-    
-    <button type='submit' onClick={this.handlePostSubmit}>Submit</button>
+      <Form.Button onClick="closeForm" onClick={this.handlePostSubmit}>Submit Question</Form.Button>
     </Fragment>
 
     )
